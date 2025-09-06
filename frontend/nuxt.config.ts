@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      ignore: ["/preview/enable", "/preview/disable"],
+      ignore: ["/api/preview/enable", "/api/preview/disable"],
     },
   },
   modules: ["@nuxtjs/sanity", "@nuxt/fonts"],
@@ -31,6 +31,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       studioUrl: process.env.NUXT_SANITY_STUDIO_URL,
+      sanityPreviewSecret: process.env.NUXT_SANITY_PREVIEW_SECRET,
     },
   },
   vite: {
