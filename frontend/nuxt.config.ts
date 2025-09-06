@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     apiVersion: process.env.NUXT_SANITY_API_VERSION || "2025-04-01",
     token: process.env.NUXT_SANITY_API_READ_TOKEN, // Only required when using a private dataset
     visualEditing: {
-      token: process.env.NUXT_SANITY_API_READ_TOKEN,
+      token: process.env.NUXT_SANITY_VIEWER_TOKEN,
       studioUrl: process.env.NUXT_SANITY_STUDIO_URL,
       stega: true,
       zIndex: 51,
@@ -27,7 +27,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       studioUrl: process.env.NUXT_SANITY_STUDIO_URL,
-      sanityPreviewSecret: process.env.NUXT_SANITY_PREVIEW_SECRET,
+      // sanityPreviewSecret: process.env.NUXT_SANITY_PREVIEW_SECRET,
     },
   },
   vite: {
