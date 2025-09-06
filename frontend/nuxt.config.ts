@@ -11,11 +11,6 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
-  nitro: {
-    prerender: {
-      ignore: ["/preview/enable", "/preview/disable"],
-    },
-  },
   modules: ["@nuxtjs/sanity", "@nuxt/fonts"],
   sanity: {
     projectId: process.env.NUXT_SANITY_PROJECT_ID,
@@ -25,6 +20,7 @@ export default defineNuxtConfig({
     visualEditing: {
       token: process.env.NUXT_SANITY_API_READ_TOKEN,
       studioUrl: process.env.NUXT_SANITY_STUDIO_URL,
+      stega: true,
       zIndex: 51,
     },
   },
