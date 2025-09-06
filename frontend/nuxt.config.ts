@@ -14,7 +14,7 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/sanity", "@nuxt/fonts"],
   sanity: {
     projectId: process.env.NUXT_SANITY_PROJECT_ID,
-    dataset: process.env.NUXT_SANITY_DATASET,
+    dataset: process.env.NUXT_SANITY_DATASET || "production",
     apiVersion: process.env.NUXT_SANITY_API_VERSION || "2025-04-01",
     token: process.env.NUXT_SANITY_API_READ_TOKEN, // Only required when using a private dataset
     visualEditing: {

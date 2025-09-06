@@ -34,7 +34,7 @@ usePageAnimation();
       >
         <div class="flex flex-col gap-4 items-center">
           <div class="text-md leading-6 prose uppercase">
-            A starter template for
+            A starter template. TESTING AUTO DEPLOY
           </div>
           <h1
             class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-black"
