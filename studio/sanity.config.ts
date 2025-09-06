@@ -23,6 +23,7 @@ const dataset = process.env.SANITY_STUDIO_DATASET || 'production'
 
 // URL for preview functionality, defaults to localhost:3000 if not set
 const SANITY_STUDIO_PREVIEW_URL = process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000'
+const SANITY_STUDIO_PREVIEW_SECRET = process.env.SANITY_STUDIO_PREVIEW_SECRET
 
 // Define the home location for the presentation tool
 const homeLocation = {
@@ -58,7 +59,7 @@ export default defineConfig({
       previewUrl: {
         origin: SANITY_STUDIO_PREVIEW_URL,
         previewMode: {
-          enable: '/preview/enable',
+          enable: `/api/preview/enable?sanity-preview-secret=${SANITY_STUDIO_PREVIEW_SECRET}`,
           disable: '/preview/disable',
         },
       },
