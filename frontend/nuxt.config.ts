@@ -11,6 +11,11 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
+  nitro: {
+    prerender: {
+      ignore: ["/preview/enable", "/preview/disable"],
+    },
+  },
   modules: ["@nuxtjs/sanity", "@nuxt/fonts"],
   sanity: {
     projectId: process.env.NUXT_SANITY_PROJECT_ID,
