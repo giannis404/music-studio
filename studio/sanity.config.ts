@@ -59,7 +59,7 @@ export default defineConfig({
       previewUrl: {
         origin: SANITY_STUDIO_PREVIEW_URL,
         previewMode: {
-          enable: `/api/preview/enable?sanity-preview-secret=${SANITY_STUDIO_PREVIEW_SECRET}`,
+          enable: '/preview/enable',
           disable: '/preview/disable',
         },
       },
