@@ -27,7 +27,13 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       studioUrl: process.env.NUXT_SANITY_STUDIO_URL,
-      // sanityPreviewSecret: process.env.NUXT_SANITY_PREVIEW_SECRET,
+      sanityPreviewSecret: process.env.NUXT_SANITY_PREVIEW_SECRET,
+    },
+  },
+  nitro: {
+    prerender: {
+      routes: ["/preview/enable", "/preview/disable"], // Tell Nitro they exist
+      ignore: ["/preview/enable", "/preview/disable"], // But don't prerender them
     },
   },
   vite: {

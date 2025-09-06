@@ -1,17 +1,25 @@
+<!-- frontend/pages/preview/enable.vue -->
 <script setup>
+// Get the query parameters that Sanity sends
 const route = useRoute();
-const pathname = route.query["sanity-preview-pathname"] || "/";
+const { $sanity } = useNuxtApp();
 
-// Set preview cookie
-const previewCookie = useCookie("__sanity_preview", {
-  maxAge: 60 * 60 * 24,
-  sameSite: "lax",
-});
+// Enable preview with the secret from Sanity
+if (process.client) {
+  const secret = route.query["sanity-preview-secret"];
+  const perspective = route.query["sanity-preview-perspective"];
+  const pathname = route.query["sanity-preview-pathname"] || "/";
 
-previewCookie.value = "true";
-
-// Redirect to the target page
-await navigateTo(pathname);
+  if (secret) {
+    // Enable preview mode with the secret
+    await $sanity.preview.enable(secret);
+    // Redirect to the target page
+    await navigateTo(pathname);
+  } else {
+    // No secret, just redirect home
+    await navigateTo("/");
+  }
+}
 </script>
 
 <template>
