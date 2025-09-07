@@ -1,132 +1,61 @@
-/**
- * This config is used to configure your Sanity Studio.
- * Learn more: https://www.sanity.io/docs/configuration
- */
-
+import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './src/schemaTypes'
-import {structure} from './src/structure'
-// import {unsplashImageAsset} from 'sanity-plugin-asset-source-unsplash'
-import {
-  presentationTool,
-  defineDocuments,
-  defineLocations,
-  type DocumentLocation,
-} from 'sanity/presentation'
-import {assist} from '@sanity/assist'
+import {schemaTypes} from './schemas'
+import {presentationTool, DocumentLocationResolver} from 'sanity/presentation'
+import {Observable, map} from 'rxjs'
 
-// Environment variables for project configuration
-const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'your-projectID'
-const dataset = process.env.SANITY_STUDIO_DATASET || 'production'
+export const projectId = process.env.SANITY_STUDIO_PROJECT_ID!
+export const dataset = process.env.SANITY_STUDIO_DATASET!
 
-// URL for preview functionality, defaults to localhost:3000 if not set
-const SANITY_STUDIO_PREVIEW_URL = process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000'
-const SANITY_STUDIO_PREVIEW_SECRET = process.env.SANITY_STUDIO_PREVIEW_SECRET
+const locate: DocumentLocationResolver = (params, context) => {
+  const {documentStore} = context
 
-// Define the home location for the presentation tool
-const homeLocation = {
-  title: 'Home',
-  href: '/',
-} satisfies DocumentLocation
+  if (params.type === 'post') {
+    // Listen to the query and fetch the draft and published document
+    const doc$ = documentStore.listenQuery(`*[_id == $id][0]{slug,title}`, params, {
+      perspective: 'drafts',
+    }) as Observable<{
+      slug: {current: string | null} | null
+      title: string | null
+    } | null>
 
-// resolveHref() is a convenience function that resolves the URL
-// path for different document types and used in the presentation tool.
-function resolveHref(documentType?: string, slug?: string): string | undefined {
-  switch (documentType) {
-    case 'post':
-      return slug ? `/posts/${slug}` : undefined
-    case 'page':
-      return slug ? `/${slug}` : undefined
-    default:
-      console.warn('Invalid document type:', documentType)
-      return undefined
+    return doc$.pipe(
+      map((doc) => {
+        if (!doc || !doc.slug?.current) return null
+
+        return {
+          locations: [
+            {
+              title: doc.title || 'Untitled',
+              href: `/post/${doc.slug.current}`,
+            },
+            {
+              title: 'Posts',
+              href: `/`,
+            },
+          ],
+        }
+      }),
+    )
   }
+
+  return null
 }
 
-// Main Sanity configuration
 export default defineConfig({
-  name: 'default',
-  title: 'Clean Nuxt + Sanity',
-
+  name: 'project-name',
+  title: 'Project Name',
   projectId,
   dataset,
-
   plugins: [
-    // Presentation tool configuration for Visual Editing
+    structureTool(),
     presentationTool({
-      previewUrl: {
-        origin: SANITY_STUDIO_PREVIEW_URL,
-        previewMode: {
-          enable: '/preview/enable',
-          disable: '/preview/disable',
-        },
-      },
-      resolve: {
-        // The Main Document Resolver API provides a method of resolving a main document from a given route or route pattern. https://www.sanity.io/docs/presentation-resolver-api#57720a5678d9
-        mainDocuments: defineDocuments([
-          {
-            route: '/:slug',
-            filter: `_type == "page" && slug.current == $slug || _id == $slug`,
-          },
-          {
-            route: '/posts/:slug',
-            filter: `_type == "post" && slug.current == $slug || _id == $slug`,
-          },
-        ]),
-        // Locations Resolver API allows you to define where data is being used in your application. https://www.sanity.io/docs/presentation-resolver-api#8d8bca7bfcd7
-        locations: {
-          settings: defineLocations({
-            locations: [homeLocation],
-            message: 'This document is used on all pages',
-            tone: 'positive',
-          }),
-          page: defineLocations({
-            select: {
-              name: 'name',
-              slug: 'slug.current',
-            },
-            resolve: (doc) => ({
-              locations: [
-                {
-                  title: doc?.name || 'Untitled',
-                  href: resolveHref('page', doc?.slug)!,
-                },
-              ],
-            }),
-          }),
-          post: defineLocations({
-            select: {
-              title: 'title',
-              slug: 'slug.current',
-            },
-            resolve: (doc) => ({
-              locations: [
-                {
-                  title: doc?.title || 'Untitled',
-                  href: resolveHref('post', doc?.slug)!,
-                },
-                {
-                  title: 'Home',
-                  href: '/',
-                } satisfies DocumentLocation,
-              ].filter(Boolean) as DocumentLocation[],
-            }),
-          }),
-        },
-      },
+      previewUrl: process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000',
+      locate,
     }),
-    structureTool({
-      structure, // Custom studio structure configuration, imported from ./src/structure.ts
-    }),
-    // Additional plugins for enhanced functionality
-    // unsplashImageAsset(),
-    assist(),
     visionTool(),
   ],
-
-  // Schema configuration, imported from ./src/schemaTypes/index.ts
   schema: {
     types: schemaTypes,
   },
