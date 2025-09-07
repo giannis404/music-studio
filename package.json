@@ -7,7 +7,8 @@
   ],
   "scripts": {
     "dev": "concurrently \"npm run dev --workspace=remix-app\" \"npm run dev --workspace=studio\"",
-    "format": "prettier --cache --write ."
+    "format": "prettier --cache --write .",
+    "print-structure": "node .dev-scripts/print-structure.js"
   },
   "prettier": "@sanity/prettier-config",
   "devDependencies": {

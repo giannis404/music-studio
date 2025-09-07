@@ -1,5 +1,5 @@
 import {type LinksFunction, json} from '@remix-run/node'
-import styles from './styles/index.css'
+import './styles/index.css'
 import {
   Link,
   Links,
@@ -13,6 +13,8 @@ import {
 import {Suspense, lazy} from 'react'
 
 const LiveVisualEditing = lazy(() => import('~/components/LiveVisualEditing'))
+
+export const unstable_shouldReload = () => false
 
 export const loader = () => {
   return json({
