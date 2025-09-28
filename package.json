@@ -1,19 +1,14 @@
 {
-  "name": "critical-studio",
-  "private": true,
-  "workspaces": [
-    "remix-app",
-    "studio"
-  ],
+  "name": "music-studio",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "concurrently \"npm run dev --workspace=remix-app\" \"npm run dev --workspace=studio\"",
-    "format": "prettier --cache --write .",
-    "print-structure": "node .dev-scripts/print-structure.js"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "prettier": "@sanity/prettier-config",
-  "devDependencies": {
-    "@sanity/prettier-config": "1.0.3",
-    "concurrently": "9.1.2",
-    "prettier": "3.5.1"
+  "dependencies": {
+    "astro": "^5.14.1"
   }
 }
