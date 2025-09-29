@@ -1,16 +1,18 @@
----
-// This should never be reached due to Netlify redirects
-// But as a fallback, redirect immediately
----
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="refresh" content="0; url=/en/">
-  <script>window.location.href="/en/";</script>
+  <title>Critical Studio</title>
+  <script>
+    // Immediate redirect without showing content
+    window.location.replace('/en/');
+  </script>
+  <style>
+    body { margin: 0; padding: 0; background: #000; }
+  </style>
 </head>
 <body>
-  <!-- Fallback link if JS disabled -->
-  <a href="/en/">Continue to English site</a>
+  <!-- Empty body - user won't see this -->
 </body>
 </html>
