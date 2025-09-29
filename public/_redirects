@@ -1,0 +1,9 @@
+# Redirect root to English by default
+/  /en/  302
+
+# Optional: Redirect any unmatched language paths to English
+/about  /en/about  302
+/contact  /en/contact  302
+/principles  /en/principles  302
+/performance  /en/performance  302
+/overview  /en/overview  302

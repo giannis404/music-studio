@@ -1,4 +1,16 @@
 ---
-// Root redirect to /en/
-return Astro.redirect('/en/');
+// This should never be reached due to Netlify redirects
+// But as a fallback, redirect immediately
 ---
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=/en/">
+  <script>window.location.href="/en/";</script>
+</head>
+<body>
+  <!-- Fallback link if JS disabled -->
+  <a href="/en/">Continue to English site</a>
+</body>
+</html>
