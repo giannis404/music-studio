@@ -1,0 +1,28 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Navigation from '../components/Navigation.vue';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <header>
+    <Navigation client:load />
+  </header>
+  
+  <main class="container">
+    <slot />
+  </main>
+  
+  <footer class="container">
+    <hr>
+    <p style="text-align: center; color: var(--pico-muted-color);">
+      © 2025 Music Studio. All rights reserved.
+    </p>
+  </footer>
+</BaseLayout>

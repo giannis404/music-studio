@@ -1,0 +1,27 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Contact - Critical Studio" description="Contact Critical Studio for bookings">
+  <section class="container">
+    <h1>Contact Critical Studio</h1>
+    <div class="grid">
+      <div>
+        <h2>For acoustic consulting or booking the place</h2>
+        <p><strong>Email:</strong> info@criticalstudio.eu</p>
+        <p><strong>Location:</strong> Close to Corinth canal</p>
+      </div>
+      <div>
+        <form>
+          <div class="grid">
+            <input type="text" placeholder="First Name" required>
+            <input type="text" placeholder="Last Name" required>
+          </div>
+          <input type="email" placeholder="Email *" required>
+          <textarea placeholder="Message" rows="5"></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</MainLayout>

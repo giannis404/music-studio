@@ -1,31 +1,35 @@
 ---
-import VueTest from './components/VueTest.vue'
+import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Music Studio - Astro + Vue</title>
-  </head>
-  <body>
-    <main style="max-width: 800px; margin: 0 auto; padding: 20px;">
-      <h1>🎼 Music Studio Portfolio</h1>
-      <p>Astro + Vue 3 integration complete!</p>
-      
-      <!-- Static content (no JS needed) -->
-      <div style="background: #e3f2fd; padding: 15px; border-radius: 4px; margin: 20px 0;">
-        <p><strong>Static content:</strong> This loads instantly with zero JavaScript!</p>
-      </div>
-      
-      <!-- Vue component with client-side interactivity -->
-      <VueTest client:load />
-      
-      <footer style="margin-top: 40px; text-align: center; color: #666;">
-        <p>Ready to build music studio features! 🎶</p>
-      </footer>
-    </main>
-  </body>
-</html>
+<MainLayout title="Critical Studio - Professional Recording" description="Professional music recording studio with state-of-the-art acoustic engineering">
+  
+  <!-- Hero Section -->
+  <section class="music-hero">
+    <h1>Critical Studio</h1>
+    <p>Professional recording studio with reference-quality acoustics</p>
+    <a href="/contact" role="button">Book a Session</a>
+  </section>
+
+  <!-- Quick Overview -->
+  <section class="container">
+    <div class="grid">
+      <article>
+        <h3>🏗️ Acoustic Design</h3>
+        <p>Custom-built reference monitoring environment with precise acoustic treatment.</p>
+        <a href="/principles">Learn More</a>
+      </article>
+      <article>
+        <h3>📊 Performance</h3>
+        <p>Measured and verified acoustic performance for professional recording.</p>
+        <a href="/performance">View Data</a>
+      </article>
+      <article>
+        <h3>🎛️ Professional Setup</h3>
+        <p>State-of-the-art equipment in an acoustically optimized environment.</p>
+        <a href="/overview">Studio Details</a>
+      </article>
+    </div>
+  </section>
+
+</MainLayout>

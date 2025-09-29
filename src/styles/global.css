@@ -1,0 +1,22 @@
+/* Import Pico CSS */
+@import "@picocss/pico";
+
+/* Your custom overrides go here */
+:root {
+  /* Music studio color theme */
+  --pico-primary: #6366f1;
+  --pico-primary-hover: #4f46e5;
+}
+
+/* Custom styles for music studio */
+.music-hero {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.track-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
