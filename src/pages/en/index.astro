@@ -1,0 +1,97 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Critical Studio - Professional Recording" description="Reference shoebox-style recording studio near Corinth canal" isHomePage={true} hideFooter={true}>
+  
+  <!-- Full Hero Section starts from absolute top -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <p class="hero-subtitle">A reference shoebox-style interior suitable for top-notch audio recording, production and reproduction.</p>
+      <p class="hero-location">Located in an autonomous building near Corinth canal</p>
+      <a href="/en/contact" class="hero-cta">GET IN TOUCH</a>
+    </div>
+  </section>
+
+  <!-- Rest of your content stays the same -->
+  
+</MainLayout>
+
+<style>
+/* Hero starts from absolute top with no gaps */
+.hero-section {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), 
+                    url('/images/studio-hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.hero-content {
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 400; /* Slightly heavier for better readability */
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  opacity: 1; /* Remove opacity that was making it fade */
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9); /* Stronger shadow for contrast */
+  max-width: 700px; /* Limit width for better reading */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-location {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 500; /* Make it slightly bolder */
+  margin-bottom: 3rem;
+  color: #42C5BE;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9); /* Stronger shadow */
+}
+
+.hero-cta {
+  display: inline-block;
+  background: transparent;
+  color: white;
+  padding: 1.2rem 3rem;
+  border: 2px solid white;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.hero-cta:hover {
+  background: #42C5BE;
+  border-color: #42C5BE;
+  color: white;
+}
+</style>

@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "print-structure": "node .dev-scripts/print-structure.js",
+    "genmd": "node .dev-scripts/generate-markdown.cjs"
   },
   "dependencies": {
     "@astrojs/vue": "^5.1.1",

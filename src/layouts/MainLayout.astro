@@ -5,9 +5,11 @@ import Navigation from '../components/Navigation.vue';
 export interface Props {
   title: string;
   description?: string;
+  hideFooter?: boolean;
+  isHomePage?: boolean; // Defaults to false - most pages are NOT home
 }
 
-const { title, description } = Astro.props;
+const { title, description, hideFooter = false, isHomePage = false } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -15,14 +17,25 @@ const { title, description } = Astro.props;
     <Navigation client:load />
   </header>
   
-  <main class="container">
+  <!-- Default behavior: add padding (for non-home pages) -->
+  <main class={!isHomePage ? 'main-with-nav' : ''}>
     <slot />
   </main>
   
-  <footer class="container">
-    <hr>
-    <p style="text-align: center; color: var(--pico-muted-color);">
-      © 2025 Music Studio.
-    </p>
-  </footer>
+  <!-- Default behavior: show footer (unless explicitly hidden) -->
+  {!hideFooter && (
+    <footer class="container">
+      <hr>
+      <p style="text-align: center; color: var(--pico-muted-color);">
+        © 2025 Critical Studio.
+      </p>
+    </footer>
+  )}
 </BaseLayout>
+
+<style>
+/* Default: push content down for non-home pages */
+.main-with-nav {
+  padding-top: 178px;
+}
+</style>

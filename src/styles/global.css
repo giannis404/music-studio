@@ -1,9 +1,31 @@
 /* Import Pico CSS */
 @import "@picocss/pico";
 
-/* Your custom overrides go here */
+/* CRITICAL: Remove all default margins/padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body > footer,
+body > header,
+body > main {
+  margin: 0;
+  padding: 0;
+}
+/* Your existing custom overrides */
 :root {
-  /* Music studio color theme */
   --pico-primary: #6366f1;
   --pico-primary-hover: #4f46e5;
 }
