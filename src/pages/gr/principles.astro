@@ -1,20 +1,106 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
+import MainLayout from "../../layouts/MainLayout.astro";
 ---
 
-<MainLayout title="Principles - Critical Studio" description="Acoustic principles and studio design">
-  <section class="container">
-    <h1>Acoustic Principles</h1>
-    <p>The technical foundation behind our studio design and acoustic engineering.</p>
-    <div style="background: var(--pico-muted-background-color); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-      <h3>🔧 Technical Details</h3>
-      <p>Insulation, room acoustics, membrane absorbers, and acoustic treatment details will be added here.</p>
-      <ul>
-        <li>Double-cell construction</li>
-        <li>Custom membrane absorbers</li>
-        <li>Frequency response optimization</li>
-        <li>Modal analysis and treatment</li>
-      </ul>
+<MainLayout
+  title="Principles - Critical Studio"
+  description="Acoustic principles and studio design"
+>
+  <section class="principles-content">
+    <div class="container">
+      <div class="principles-grid">
+        <!-- Insulation -->
+        <div class="principle-section">
+          <h2 style="font-size: 1.5rem">Ηχομόνωση</h2>
+          <img
+            src="/images/principles/principles-insulation.jpg"
+            alt="Studio insulation construction"
+            class="principle-image"
+          />
+          <p>
+            Η κατασκευή διπλού κελύφους προσφέρει σημαντική μείωση του
+            αερόφερτου θορύβου (58 dB). Το εξωτερικό κέλυφος αποτελείται από
+            τσιμεντόλιθους γεμισμένους με άμμο.
+          </p>
+        </div>
+
+        <!-- Room Acoustics -->
+        <div class="principle-section">
+          <h2 style="font-size: 1.5rem">Ακουστική Χώρου</h2>
+          <img
+            src="/images/principles/principles-room-acoustics.jpg"
+            alt="Studio room acoustics treatment"
+            class="principle-image"
+          />
+          <p>
+            Υπήρξε ένα σημείο αμφισημίας σχετικά με τα τοιχώματα του εσωτερικού
+            κελύφους· αν θα έπρεπε να είναι αρκετά άκαμπτα (με στόχο τη μέγιστη
+            ηχομόνωση) ή αν θα έπρεπε να χρησιμοποιηθεί υλικό τύπου γυψοσανίδας.
+            Επιλέχθηκε η πρώτη προσέγγιση, γεγονός που οδήγησε στη συστηματική
+            χρήση ειδικά κατασκευασμένων μεμβρανικών απορροφητών. Η τελική
+            διαμόρφωση περιλαμβάνει έναν αρθρωτό υβριδικό σχεδιασμό από πορώδη
+            και μεμβρανικά πάνελ.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 </MainLayout>
+
+<style>
+  .principles-content {
+    background: #f8f8f9;
+    padding: 1rem 0;
+  }
+
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .principle-section h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+  }
+
+  .principle-image {
+    width: 100%;
+    height: 320px;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    display: block;
+    object-fit: cover;
+  }
+
+  .principle-section p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .principles-content {
+      padding: 0;
+    }
+
+    .principles-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .principle-section h2 {
+      font-size: 1.6rem;
+      text-align: center;
+    }
+
+    .principle-section p {
+      text-align: center;
+    }
+  }
+</style>

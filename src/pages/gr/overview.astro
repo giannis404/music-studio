@@ -1,20 +1,163 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
+import MainLayout from "../../layouts/MainLayout.astro";
 ---
 
-<MainLayout title="Overview - Critical Studio" description="Complete overview of studio capabilities">
-  <section class="container">
-    <h1>Studio Overview</h1>
-    <p>Complete overview of our studio capabilities, equipment, and booking information.</p>
-    <div style="background: var(--pico-muted-background-color); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-      <h3>🎛️ Studio Features</h3>
-      <p>Equipment list, room configurations, and studio capabilities overview will be added here.</p>
-      <ul>
-        <li>Recording capabilities</li>
-        <li>Monitoring systems</li>
-        <li>Available equipment</li>
-        <li>Room configurations</li>
-      </ul>
+<MainLayout
+  title="Overview - Critical Studio"
+  description="Complete overview of Critical Studio capabilities"
+>
+  <section class="overview-section">
+    <div class="container">
+      <div class="overview-grid">
+        <!-- Card 1: Isolation -->
+        <div class="overview-card card-1">
+          <div class="card-overlay"></div>
+          <div class="card-content">
+            <p>
+              Απομονωμένο από τον έξω κόσμο, το Critical Studio προσφέρει τη
+              δυνατότητα για αδιάκοπες ηχογραφήσεις κορυφαίας ποιότητας,
+              παρακολούθηση χωρίς ενοχλήσεις και απόλυτη ηρεμία σε όλους όσοι
+              βρίσκονται μέσα στον χώρο.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: Modal Decays -->
+        <div class="overview-card card-2">
+          <div class="card-overlay"></div>
+          <div class="card-content">
+            <p>
+              Οι αποσβέσεις των ιδιορρυθμών κάτω από τα όρια ακουστότητας και ο
+              χρόνος αντήχησης (~0.35s) εξασφαλίζουν ζωντανή και καθαρή
+              αναπαραγωγή, ενώ ο άμεσος ήχος παραμένει αχρωμάτιστος.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: Recording -->
+        <div class="overview-card card-3">
+          <div class="card-overlay"></div>
+          <div class="card-content">
+            <p>
+              Με την αφαίρεση των πορωδών απορροφητών από τους τοίχους, ο χρόνος
+              αντήχησης (~0.6s) καθίσταται ιδανικός για ηχογραφήσεις.
+            </p>
+            <p class="booking-text">
+              Ο εσωτερικός χώρος είναι διαθέσιμος για μεμονωμένα έργα, όπως
+              πρόβες, ηχογραφήσεις και επεξεργασία σήματος.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </MainLayout>
+
+<style>
+  .overview-section {
+    background: #f8f8f9;
+    padding: 3rem 0;
+    min-height: calc(100vh - 318px);
+    display: flex;
+    align-items: center;
+  }
+
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 0 auto;
+  }
+
+  /* Overview Card Base */
+  .overview-card {
+    position: relative;
+    min-height: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .overview-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Background Images */
+  .card-1 {
+    background-image: url("/images/overview/overview-1.jpg");
+  }
+
+  .card-2 {
+    background-image: url("/images/overview/overview-2.jpg");
+  }
+
+  .card-3 {
+    background-image: url("/images/overview/overview-3.jpg");
+  }
+
+  /* Dark Overlay for Readability */
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.75));
+    z-index: 1;
+  }
+
+  /* Card Content */
+  .card-content {
+    position: relative;
+    z-index: 2;
+    padding: 2.5rem;
+    text-align: center;
+    color: white;
+  }
+
+  .card-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+    color: #ffffff; /* Explicit white */
+    font-weight: 500; /* Slightly bolder */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  }
+
+  .booking-text {
+    margin-top: 1.5rem;
+    font-weight: 600; /* Even bolder for accent */
+    color: #42c5be !important;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .overview-section {
+      padding-top: 0;
+    }
+
+    .overview-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .overview-card {
+      min-height: 350px;
+    }
+
+    .card-content {
+      padding: 2rem;
+    }
+
+    .card-content p {
+      font-size: 1rem;
+    }
+  }
+</style>

@@ -24,6 +24,16 @@ body > main {
   margin: 0;
   padding: 0;
 }
+
+html,
+body,
+header,
+main,
+section,
+footer {
+  background-color: #f8f8f9 !important;
+  color: #1a1a1a !important;
+}
 /* Your existing custom overrides */
 :root {
   --pico-primary: #6366f1;
@@ -42,3 +52,7 @@ body > main {
   gap: 1rem;
   margin: 2rem 0;
 }
+/* 
+.container {
+  min-height: calc(100vh - 482px);
+} */

@@ -1,20 +1,475 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
+import MainLayout from "../../layouts/MainLayout.astro";
 ---
 
-<MainLayout title="Performance - Critical Studio" description="Studio performance and acoustic measurements">
-  <section class="container">
-    <h1>Studio Performance</h1>
-    <p>Detailed acoustic measurements and performance analysis of our recording environment.</p>
-    <div style="background: var(--pico-muted-background-color); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-      <h3>📊 Acoustic Data</h3>
-      <p>Modal response charts, frequency analysis, and reverberation time measurements will be displayed here.</p>
-      <ul>
-        <li>Modal decay analysis</li>
-        <li>Frequency response curves</li>
-        <li>RT60 measurements</li>
-        <li>Background noise levels</li>
-      </ul>
+<MainLayout
+  title="Performance - Critical Studio"
+  description="Studio performance and acoustic measurements"
+>
+  <section class="performance-content">
+    <div class="container">
+      <!-- Intro Text -->
+      <div class="intro-section">
+        <p>
+          Assessment of the acoustics takes place in this section. When we
+          examine how rooms colour the sound, we look at the time domain
+          behavior. In Classical Acoustics the concept has been known as
+          reverberation time (RT). In small rooms, we are primarily concerned
+          about the low-frequency counterpart; modal decay time (MDT).
+        </p>
+        <p>
+          Modes are known as primary factor of perceived coloration in rooms for
+          listening. Uncolored soundstage is achieved only when the resonances
+          are sufficiently damped. The degree of damping for each frequency has
+          been determined (Fazenda et al., 2015) as a function of MDT.
+        </p>
+      </div>
+
+      <hr style="border-top: 1px solid #1a1a1a;" />
+
+      <!-- MAIN SECTION: PLANES -->
+      <div class="main-section">
+        <div class="main-section-image">
+          <img
+            src="/images/performance/performance-planes.jpg"
+            alt="Studio construction planes"
+          />
+        </div>
+        <div class="main-section-content">
+          <h2>PLANES</h2>
+          <p>
+            Before revealing the performance in depth, the layers that comprise
+            each plane and sub-plane are displayed. Evaluation of the room
+            response is then conducted through the results of room measurements.
+          </p>
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- Subsection: Floor (Image Left) -->
+      <div class="subsection image-left">
+        <div class="subsection-image">
+          <img
+            src="/images/performance/performance-floor.jpg"
+            alt="Studio floor construction"
+          />
+        </div>
+        <div class="subsection-content">
+          <h3>Floor</h3>
+          <p>
+            A wooden floor is separated from the main slab. In between, the 10cm
+            gap is filled with rockwool.
+          </p>
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- Subsection: Ceiling (Image Right) -->
+      <div class="subsection image-right">
+        <div class="subsection-content">
+          <h3>Ceiling</h3>
+          <p>
+            The ceiling essentially is a triple-layer construction
+            (slab-drywall-tiles). Right above the visible tile ceiling, HVAC
+            tubes take place.
+          </p>
+        </div>
+        <div class="subsection-image">
+          <img
+            src="/images/performance/performance-ceiling.jpg"
+            alt="Studio ceiling construction"
+          />
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- Subsection: Vertical Walls (Image Left) -->
+      <div class="subsection image-left">
+        <div class="subsection-image">
+          <img
+            src="/images/performance/performance-vertical-walls.jpg"
+            alt="Studio vertical walls"
+          />
+        </div>
+        <div class="subsection-content">
+          <h3>Vertical Walls</h3>
+          <p>
+            Before the floating floor/ceiling took place, floating brick walls
+            were assembled. At the certain point the slab to slab distance was
+            4m.
+          </p>
+        </div>
+      </div>
+
+      <hr style="border-top: 1px solid #1a1a1a;" />
+
+      <!-- MAIN SECTION: SUBPLANES -->
+      <div class="main-section">
+        <div class="main-section-image">
+          <img
+            src="/images/performance/performance-subplanes.jpg"
+            alt="Studio acoustic subplanes"
+          />
+        </div>
+        <div class="main-section-content">
+          <h2>SUBPLANES</h2>
+          <p>
+            Panels that occupy 1.3 square metres are mounted on the vertical
+            walls. The panels are divided into membrane of two different
+            thicknesses and porous 5cm thick with cloth.
+          </p>
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- Subsection: Membrane Absorbers (Image Right) -->
+      <div class="subsection image-right">
+        <div class="subsection-content">
+          <h3>Membrane Absorbers</h3>
+          <p>
+            Critical Studio boasts significant low-frequency damping thanks to
+            uniform absorption by custom membrane absorbers (20cm and 10cm
+            thick). The enclosed gaps are filled with rockwool. The masses of
+            the front surfaces are increased with viscous material.
+          </p>
+        </div>
+        <div class="subsection-image">
+          <img
+            src="/images/performance/performance-membrane-absorbers.jpg"
+            alt="Membrane absorbers"
+          />
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- Subsection: Porous Absorbers (Image Left) -->
+      <div class="subsection image-left">
+        <div class="subsection-image">
+          <img
+            src="/images/performance/performance-porous-absorbers.jpg"
+            alt="Porous absorbers"
+          />
+        </div>
+        <div class="subsection-content">
+          <h3>Porous Absorbers</h3>
+          <p>
+            The porous absorbers can quickly be hung/unhung by a single person.
+            When in place, the sound field is suitable for monitoring. When
+            removed, the place is transformed into live room.
+          </p>
+        </div>
+      </div>
+
+      <hr style="border-top: 1px solid #1a1a1a;" />
+
+      <!-- MAIN SECTION: MODAL RESPONSE (No Image) -->
+      <div class="main-section modal-section">
+        <div class="main-section-content-full">
+          <h2>MODAL RESPONSE</h2>
+          <p class="modal-text" style="font-size: 1.25rem; font-style: italic;">
+            The effect of the room is depicted below in regards to MDT.
+          </p>
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- Modal Response Pair 1 -->
+      <div class="modal-pair">
+        <div class="modal-images">
+          <img
+            src="/images/performance/performance-modal-response-1.jpg"
+            alt="Studio without absorbers"
+          />
+          <img
+            src="/images/performance/performance-modal-response-2.jpg"
+            alt="Modal decay chart - no absorbers"
+          />
+        </div>
+        <p class="modal-text">
+          When the absorbers are absent from the vertical walls, the
+          measurements reveal decays perceived as coloration.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Modal Response Pair 2 -->
+      <div class="modal-pair">
+        <div class="modal-images">
+          <img
+            src="/images/performance/performance-modal-response-3.jpg"
+            alt="Studio with absorbers"
+          />
+          <img
+            src="/images/performance/performance-modal-response-4.jpg"
+            alt="Modal decay chart - with absorbers"
+          />
+        </div>
+        <p class="modal-text">
+          With the absorbers in place, inaudible decays for musical signals are
+          realized.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Modal Response Pair 3 -->
+      <div class="modal-pair">
+        <div class="modal-images">
+          <img
+            src="/images/performance/performance-modal-response-5.jpg"
+            alt="Membrane absorber backing detail"
+          />
+          <img
+            src="/images/performance/performance-modal-response-6.jpg"
+            alt="Modal decay chart - improved"
+          />
+        </div>
+        <p class="modal-text">
+          Some kind of discontinuity was detected on the backing of the thicker
+          membrane absorbers. Acrylic paste was added to make them airtight,
+          lowering further the decay times. The (2, 0, 0) mode at 44 Hz achieves
+          decay which is undetectable in sine wave experiments.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Modal Response Final -->
+      <div class="modal-pair">
+        <div class="modal-images">
+          <img
+            src="/images/performance/performance-modal-response-7.jpg"
+            alt="Final modal decay chart"
+          />
+        </div>
+        <p class="modal-text">
+          The latter move also improves the response even lower. The (0, 1, 0)
+          mode at 29 Hz achieves decay that indicates absence of coloration.
+        </p>
+      </div>
     </div>
   </section>
 </MainLayout>
+
+<style>
+  .performance-content {
+    background: #f8f8f9;
+    padding: 1rem 0;
+    min-height: calc(100vh - 178px);
+  }
+
+  /* Intro Section */
+  .intro-section {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+  }
+
+  .intro-section p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Main Section (Image + Header) */
+  .main-section {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin: 4rem 0 3rem;
+  }
+
+  .main-section-image img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .main-section-content h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+  }
+
+  .main-section-content p {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  /* Modal Section (No Image) */
+  .modal-section {
+    grid-template-columns: 1fr;
+    margin: 5rem 0 3rem;
+  }
+
+  .main-section-content-full h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+  }
+
+  .main-section-content-full p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+  }
+
+  /* Subsections */
+  .subsection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin: 3rem 0;
+  }
+
+  .subsection-image img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .subsection-content h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+  }
+
+  .subsection-content p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+  }
+
+  /* Modal Response Pairs */
+  .modal-pair {
+    margin: 3rem 0;
+  }
+
+  .modal-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .modal-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  /* Single image in last pair */
+  .modal-pair:last-child .modal-images {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+
+  .modal-text {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    text-align: left;
+    margin: 0 auto;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .performance-content {
+      padding: 0;
+    }
+
+    .intro-section {
+      margin-bottom: 3rem;
+    }
+
+    .intro-section p {
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    /* Main sections stack */
+    .main-section {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin: 3rem 0 2rem;
+    }
+
+    .main-section-image img {
+      height: 250px;
+    }
+
+    .main-section-content h2,
+    .main-section-content-full h2 {
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .main-section-content p,
+    .main-section-content-full p {
+      text-align: center;
+    }
+
+    /* Subsections stack */
+    .subsection {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+
+    /* Always image first on mobile */
+    .subsection.image-right {
+      grid-template-areas: "image" "content";
+    }
+
+    .subsection.image-right .subsection-image {
+      grid-area: image;
+    }
+
+    .subsection.image-right .subsection-content {
+      grid-area: content;
+    }
+
+    .subsection-image img {
+      height: 250px;
+    }
+
+    .subsection-content h3 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .subsection-content p {
+      text-align: center;
+    }
+
+    /* Modal images stack */
+    .modal-images {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .modal-text {
+      font-size: 1rem;
+    }
+  }
+</style>

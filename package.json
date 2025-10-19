@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "print-structure": "node .dev-scripts/print-structure.js",
+    "print-structure": "node .dev-scripts/print-structure.cjs",
     "genmd": "node .dev-scripts/generate-markdown.cjs"
   },
   "dependencies": {

@@ -1,14 +1,142 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
+import MainLayout from "../../layouts/MainLayout.astro";
 ---
 
-<MainLayout title="Σχετικά - Critical Studio" description="Σχετικά με το Critical Studio και την αποστολή μας">
-  <section class="container">
-    <h1>Σχετικά με το Critical Studio</h1>
-    <p>Επαγγελματικό στούντιο ηχογράφησης με ακουστική και εξοπλισμό αιχμής.</p>
-    <div style="background: var(--pico-muted-background-color); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-      <h3>🚧 Έρχεται Σύντομα</h3>
-      <p>Η ιστορία του στούντιο, πληροφορίες ομάδας και λεπτομέρειες αποστολής θα προστεθούν εδώ.</p>
+<MainLayout
+  title="About - Critical Studio"
+  description="About Critical Studio and our mission"
+  hasTopHero={true}
+>
+  <!-- Hero Section with Logo -->
+  <section class="about-hero">
+    <div class="hero-logo-container">
+      <img
+        src="/images/logo-white.png"
+        alt="Critical Studio"
+        class="hero-logo"
+      />
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="about-content">
+    <div class="container">
+      <p class="intro-text">
+        Το Critical Studio είναι στούντιο τύπου “shoebox”, σχεδιασμένο ως
+        πρότυπος χώρος για κορυφαία ηχογράφηση, παραγωγή και αναπαραγωγή ήχου.
+        Αποτελεί μέρος ενός αυτόνομου κτιρίου που ανεγέρθηκε το 2019, κοντά στη
+        Διώρυγα της Κορίνθου.
+      </p>
+
+      <p>
+        Το στούντιο συνδυάζει αυστηρή ακουστική μηχανική με πρακτική ευελιξία,
+        προσφέροντας ιδανικές συνθήκες για επαγγελματική ηχογράφηση, μίξη και
+        κριτική ακρόαση.
+      </p>
     </div>
   </section>
 </MainLayout>
+
+<style>
+  /* Hero Section - NO MARGINS, starts from absolute top */
+  .about-hero {
+    position: relative;
+    height: 45vh;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* prevent blur overflow */
+  }
+
+  .about-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/images/studio-interior-2.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(4px); /* adjust blur radius */
+    transform: scale(1.1); /* prevent edge cropping after blur */
+    z-index: 0;
+  }
+
+  .about-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6));
+    z-index: 1;
+  }
+
+  .about-hero > * {
+    position: relative;
+    z-index: 2; /* content on top */
+  }
+
+  .hero-logo-container {
+    text-align: center;
+  }
+
+  .hero-logo {
+    width: 400px;
+    height: auto;
+    max-width: 90vw;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.8));
+    margin-top: 35%;
+  }
+
+  /* Content Section */
+  .about-content {
+    background: #f8f8f9;
+    padding: 3rem 0;
+    min-height: calc(100vh - 58vh); /* Fill remaining viewport height */
+  }
+
+  .about-content h1 {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .intro-text {
+    font-size: clamp(1.3rem, 2.5vw, 1.5rem);
+    font-weight: 500; /* Bolder */
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+  }
+
+  .about-content p {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .about-hero {
+      height: 40vh;
+      min-height: 300px;
+    }
+
+    .hero-logo {
+      width: 250px;
+    }
+
+    .about-content {
+      padding: 3rem 0;
+      min-height: calc(100vh - 52vh);
+    }
+
+    .intro-text {
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .about-content p {
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  }
+</style>

@@ -1,7 +1,10 @@
 <template>
   <nav
     class="container-fluid"
-    :class="{ 'nav-home': isHomePage, 'nav-other': !isHomePage }"
+    :class="{
+      'nav-home': needsTransparentNav,
+      'nav-other': !needsTransparentNav,
+    }"
   >
     <!-- Desktop & Mobile Header -->
     <div class="nav-header">
@@ -30,22 +33,42 @@
     <!-- Navigation Links -->
     <div class="nav-links" :class="{ 'mobile-open': isMobileMenuOpen }">
       <div class="nav-items">
-        <a :href="localePath('/')" @click="closeMobileMenu">{{ t.nav.home }}</a>
-        <a :href="localePath('/about')" @click="closeMobileMenu">{{
-          t.nav.about
-        }}</a>
-        <a :href="localePath('/principles')" @click="closeMobileMenu">{{
-          t.nav.principles
-        }}</a>
-        <a :href="localePath('/performance')" @click="closeMobileMenu">{{
-          t.nav.performance
-        }}</a>
-        <a :href="localePath('/overview')" @click="closeMobileMenu">{{
-          t.nav.overview
-        }}</a>
-        <a :href="localePath('/contact')" @click="closeMobileMenu">{{
-          t.nav.contact
-        }}</a>
+        <a
+          :href="localePath('/')"
+          @click="closeMobileMenu"
+          :class="{ active: isActive('/') }"
+          >{{ t.nav.home }}</a
+        >
+        <a
+          :href="localePath('/about')"
+          @click="closeMobileMenu"
+          :class="{ active: isActive('/about') }"
+          >{{ t.nav.about }}</a
+        >
+        <a
+          :href="localePath('/principles')"
+          @click="closeMobileMenu"
+          :class="{ active: isActive('/principles') }"
+          >{{ t.nav.principles }}</a
+        >
+        <a
+          :href="localePath('/performance')"
+          @click="closeMobileMenu"
+          :class="{ active: isActive('/performance') }"
+          >{{ t.nav.performance }}</a
+        >
+        <a
+          :href="localePath('/overview')"
+          @click="closeMobileMenu"
+          :class="{ active: isActive('/overview') }"
+          >{{ t.nav.overview }}</a
+        >
+        <a
+          :href="localePath('/contact')"
+          @click="closeMobileMenu"
+          :class="{ active: isActive('/contact') }"
+          >{{ t.nav.contact }}</a
+        >
 
         <!-- Language Switcher -->
         <div class="language-switcher">
@@ -57,7 +80,6 @@
               currentLang === 'en' ? 'Switch to Greek' : 'Switch to English'
             "
           >
-            <!-- Show opposite flag of current language -->
             <img
               v-if="currentLang === 'en'"
               src="/icons/flag-gr.svg"
@@ -87,15 +109,24 @@
 <script setup>
 import { computed, ref, onMounted, onUnmounted } from "vue";
 
+const props = defineProps({
+  transparentNav: {
+    type: Boolean,
+    default: false,
+  },
+});
+
 // Mobile menu state
 const isMobileMenuOpen = ref(false);
 
 // Current language detection
 const currentLang = ref("en");
 const currentPath = ref("");
+const isPathDetected = ref(false); // NEW: Track if path is loaded
 
 // Check if we're on home page
-const isHomePage = computed(() => {
+const needsTransparentNav = computed(() => {
+  if (props.transparentNav) return true;
   const path = currentPath.value;
   return path === "/en/" || path === "/gr/" || path === "/en" || path === "/gr";
 });
@@ -124,10 +155,8 @@ const translations = {
   },
 };
 
-// Current translations
 const t = computed(() => translations[currentLang.value]);
 
-// Helper functions
 const localePath = (path) => {
   return `/${currentLang.value}${path === "/" ? "/" : path}`;
 };
@@ -137,11 +166,23 @@ const switchLanguageUrl = (targetLang) => {
   return `/${targetLang}${path === "/" ? "/" : path}`;
 };
 
-// Mobile menu functions
+// Check if a path is active
+const isActive = (path) => {
+  // Don't show active state until path is detected
+  if (!isPathDetected.value) return false;
+
+  const currentNormalized = currentPath.value.replace(/^\/(en|gr)/, "") || "/";
+  const checkPath = path === "/" ? "/" : path;
+
+  if (checkPath === "/") {
+    return currentNormalized === "/" || currentNormalized === "";
+  }
+
+  return currentNormalized.startsWith(checkPath);
+};
+
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
-
-  // Prevent body scroll when menu is open
   if (isMobileMenuOpen.value) {
     document.body.style.overflow = "hidden";
   } else {
@@ -154,19 +195,17 @@ const closeMobileMenu = () => {
   document.body.style.overflow = "";
 };
 
-// Close menu on escape key
 const handleEscape = (e) => {
   if (e.key === "Escape") {
     closeMobileMenu();
   }
 };
 
-// Detect current language and path on mount
 onMounted(() => {
   if (typeof window !== "undefined") {
     const pathname = window.location.pathname;
-
     const langMatch = pathname.match(/^\/?(en|gr)/);
+
     if (langMatch) {
       currentLang.value = langMatch[1];
       currentPath.value = pathname;
@@ -175,13 +214,14 @@ onMounted(() => {
       currentPath.value = "/en/";
     }
 
-    // Add escape key listener
+    // Mark path as detected after setting it
+    isPathDetected.value = true;
+
     document.addEventListener("keydown", handleEscape);
   }
 });
 
 onUnmounted(() => {
-  // Cleanup
   document.body.style.overflow = "";
   document.removeEventListener("keydown", handleEscape);
 });
@@ -243,6 +283,7 @@ nav.container-fluid {
   font-size: 1rem;
   transition: color 0.3s ease;
   white-space: nowrap;
+  position: relative;
 }
 
 /* Hamburger Button - FIXED ANIMATION */
@@ -436,6 +477,11 @@ nav.container-fluid {
     z-index: 1001; /* Individual link z-index */
   }
 
+  /* Mobile active link - left border instead of bottom */
+  .nav-items a.active::after {
+    display: none;
+  }
+
   .language-switcher {
     margin-top: 1rem;
     width: 100%;
@@ -458,10 +504,6 @@ nav.container-fluid {
 }
 
 /* HOME PAGE STYLES */
-nav.nav-home {
-  backdrop-filter: none !important;
-}
-
 nav.nav-home a,
 nav.nav-home .hamburger-btn {
   color: white !important;
@@ -469,6 +511,11 @@ nav.nav-home .hamburger-btn {
 }
 
 nav.nav-home a:hover {
+  color: #42c5be !important;
+}
+
+/* Active link on home page */
+nav.nav-home a.active {
   color: #42c5be !important;
 }
 
@@ -491,6 +538,11 @@ nav.nav-other .hamburger-btn {
 }
 
 nav.nav-other a:hover {
+  color: #42c5be !important;
+}
+
+/* Active link on other pages */
+nav.nav-other a.active {
   color: #42c5be !important;
 }
 
@@ -528,7 +580,7 @@ nav.nav-other .dropdown summary {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: fill; /* CHANGED FROM 'cover' TO 'fill' */
+  object-fit: fill;
   margin: 0;
   padding: 0;
 }

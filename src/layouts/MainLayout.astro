@@ -1,41 +1,52 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import Navigation from '../components/Navigation.vue';
+import BaseLayout from "./BaseLayout.astro";
+import Navigation from "../components/Navigation.vue";
 
 export interface Props {
   title: string;
   description?: string;
   hideFooter?: boolean;
-  isHomePage?: boolean; // Defaults to false - most pages are NOT home
+  isHomePage?: boolean;
+  hasTopHero?: boolean;
 }
 
-const { title, description, hideFooter = false, isHomePage = false } = Astro.props;
+const {
+  title,
+  description,
+  hideFooter = true,
+  isHomePage = false,
+  hasTopHero = false,
+} = Astro.props;
+
+const needsPadding = !isHomePage && !hasTopHero;
+// Pages with hero sections should have transparent nav
+const needsTransparentNav = isHomePage || hasTopHero;
 ---
 
 <BaseLayout title={title} description={description}>
   <header>
-    <Navigation client:load />
+    <Navigation
+      client:load
+      transparentNav={needsTransparentNav || hasTopHero}
+    />
   </header>
-  
-  <!-- Default behavior: add padding (for non-home pages) -->
-  <main class={!isHomePage ? 'main-with-nav' : ''}>
+
+  <main class={needsPadding ? "main-with-nav" : ""}>
     <slot />
   </main>
-  
-  <!-- Default behavior: show footer (unless explicitly hidden) -->
-  {!hideFooter && (
-    <footer class="container">
-      <hr>
-      <p style="text-align: center; color: var(--pico-muted-color);">
-        © 2025 Critical Studio.
-      </p>
-    </footer>
-  )}
+
+  {
+    !hideFooter && (
+      <footer class="container">
+        <hr />
+        <p style="text-align: center;">© 2025 Critical Studio.</p>
+      </footer>
+    )
+  }
 </BaseLayout>
 
 <style>
-/* Default: push content down for non-home pages */
-.main-with-nav {
-  padding-top: 178px;
-}
+  .main-with-nav {
+    padding-top: 178px;
+  }
 </style>

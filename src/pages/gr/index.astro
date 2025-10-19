@@ -1,198 +1,176 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
+import MainLayout from "../../layouts/MainLayout.astro";
 ---
 
-<MainLayout 
-  title="Critical Studio - Επαγγελματική Ηχογράφηση" 
+<MainLayout
+  title="Critical Studio - Επαγγελματική Ηχογράφηση"
   description="Επαγγελματικό στούντιο ηχογράφησης με ακουστική αναφοράς κοντά στη διώρυγα Κορίνθου"
   isHomePage={true}
   hideFooter={true}
 >
-  
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-content">
-      <p class="hero-subtitle">Ένα εσωτερικό αναφοράς shoebox-style κατάλληλο για κορυφαία ηχογράφηση, παραγωγή και αναπαραγωγή ήχου.</p>
-      <p class="hero-location">Στεγάζεται σε αυτόνομο κτίριο κοντά στη διώρυγα Κορίνθου</p>
+      <p class="hero-subtitle">
+        Ένα εσωτερικό αναφοράς shoebox-style κατάλληλο για κορυφαία ηχογράφηση,
+        παραγωγή και αναπαραγωγή ήχου.
+      </p>
+      <p class="hero-location">
+        Στεγάζεται σε αυτόνομο κτίριο κοντά στη διώρυγα Κορίνθου
+      </p>
       <a href="/gr/contact" class="hero-cta">ΕΠΙΚΟΙΝΩΝΙΑ</a>
     </div>
   </section>
-
-  <!-- Professional Features Section -->
-  <section class="features-section">
-    <div class="container">
-      <h2>Επαγγελματικό Περιβάλλον Ήχου</h2>
-      <div class="features-grid">
-        <article class="feature-card">
-          <div class="feature-icon">🏗️</div>
-          <h3>Ακουστική Μηχανική</h3>
-          <p>Σχεδιασμός αναφοράς shoebox με ακριβή ακουστική επεξεργασία για βέλτιστες συνθήκες ηχογράφησης.</p>
-          <a href="/gr/principles" class="feature-link">Μάθετε Περισσότερα →</a>
-        </article>
-        <article class="feature-card">
-          <div class="feature-icon">📊</div>
-          <h3>Μετρημένη Απόδοση</h3>
-          <p>Επιβεβαιωμένα δεδομένα ακουστικής απόδοσης που εξασφαλίζουν επαγγελματικά πρότυπα ηχογράφησης.</p>
-          <a href="/gr/performance" class="feature-link">Δείτε Δεδομένα →</a>
-        </article>
-        <article class="feature-card">
-          <div class="feature-icon">🎛️</div>
-          <h3>Επαγγελματική Εγκατάσταση</h3>
-          <p>Εξοπλισμός αιχμής σε ακουστικά βελτιστοποιημένο αυτόνομο κτίριο.</p>
-          <a href="/gr/overview" class="feature-link">Λεπτομέρειες Στούντιο →</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
 </MainLayout>
 
 <style>
-/* Copy the exact same styles from English page */
-.hero-section {
-  height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), 
-                    url('/images/studio-hero-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin: 0 !important;
-  padding: 0 !important;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-.hero-content {
-  text-align: center;
-  color: white;
-  max-width: 800px;
-  padding: 0 2rem;
-}
-
-.hero-subtitle {
-  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-  font-weight: 400;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  opacity: 1;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hero-location {
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  font-weight: 500;
-  margin-bottom: 3rem;
-  color: #42C5BE;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
-}
-
-.hero-cta {
-  display: inline-block;
-  background: transparent;
-  color: white;
-  padding: 1.2rem 3rem;
-  border: 2px solid white;
-  text-decoration: none;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-}
-
-.hero-cta:hover {
-  background: #42C5BE;
-  border-color: #42C5BE;
-  color: white;
-}
-
-/* Features Section */
-.features-section {
-  padding: 5rem 0;
-  background: #f8f9fa;
-}
-
-.features-section h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 300;
-  margin-bottom: 3rem;
-  color: #2c3e50;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.feature-card {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.feature-icon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-}
-
-.feature-card h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #2c3e50;
-}
-
-.feature-card p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #6c757d;
-  margin-bottom: 1.5rem;
-}
-
-.feature-link {
-  color: #42C5BE;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.feature-link:hover {
-  color: #369a94;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
+  /* Copy the exact same styles from English page */
   .hero-section {
-    background-attachment: scroll;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+      url("/images/studio-hero-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0 !important;
+    padding: 0 !important;
+    top: 0;
+    left: 0;
+    right: 0;
   }
-  
+
+  .hero-content {
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    opacity: 1;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-location {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 500;
+    margin-bottom: 3rem;
+    color: #42c5be;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: transparent;
+    color: white;
+    padding: 1.2rem 3rem;
+    border: 2px solid white;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+  }
+
+  .hero-cta:hover {
+    background: #42c5be;
+    border-color: #42c5be;
+    color: white;
+  }
+
+  /* Features Section */
+  .features-section {
+    padding: 5rem 0;
+    background: #f8f9fa;
+  }
+
+  .features-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+  }
+
   .features-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
   }
-  
+
   .feature-card {
-    padding: 2rem;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
-}
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+  }
+
+  .feature-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-link {
+    color: #42c5be;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .feature-link:hover {
+    color: #369a94;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .hero-section {
+      background-attachment: scroll;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      padding: 2rem;
+    }
+  }
 </style>
