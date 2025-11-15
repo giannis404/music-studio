@@ -22,17 +22,23 @@ import MainLayout from "../../layouts/MainLayout.astro";
   <section class="about-content">
     <div class="container">
       <p class="intro-text">
-        Το Critical Studio είναι στούντιο τύπου “shoebox”, σχεδιασμένο ως
-        πρότυπος χώρος για κορυφαία ηχογράφηση, παραγωγή και αναπαραγωγή ήχου.
-        Αποτελεί μέρος ενός αυτόνομου κτιρίου που ανεγέρθηκε το 2019, κοντά στη
-        Διώρυγα της Κορίνθου.
+        Το Critical Studio αποτελεί χώρο σχεδιασμένο ως πρότυπο δωμάτιο για
+        κορυφαία ηχογράφηση, παραγωγή και αναπαραγωγή ήχου. Συνιστά τμήμα
+        αυτόνομου κτιρίου που ανεγέρθηκε το 2019, κοντά στη Διώρυγα της
+        Κορίνθου.
       </p>
 
       <p>
-        Το στούντιο συνδυάζει αυστηρή ακουστική μηχανική με πρακτική ευελιξία,
+        Το στούντιο συνδυάζει ενδελεχή ακουστική μελέτη με πρακτική ευελιξία,
         προσφέροντας ιδανικές συνθήκες για επαγγελματική ηχογράφηση, μίξη και
         κριτική ακρόαση.
       </p>
+
+      <ul>
+        <li>Ηχομόνωση: Δρ. Ν. Μπάρκας</li>
+        <li>Ακουστική: Δρ. Δ. Κεραμίδας</li>
+        <li>Μετρήσεις: Ι. Παπαφίλης (MSc)</li>
+      </ul>
     </div>
   </section>
 </MainLayout>
@@ -97,6 +103,24 @@ import MainLayout from "../../layouts/MainLayout.astro";
     font-size: clamp(2rem, 5vw, 2.5rem);
     font-weight: 300;
     margin-bottom: 2rem;
+  }
+
+  .about-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .about-content li {
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    list-style: none;
   }
 
   .intro-text {

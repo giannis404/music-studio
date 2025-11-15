@@ -23,14 +23,20 @@ import MainLayout from "../../layouts/MainLayout.astro";
     <div class="container">
       <p class="intro-text">
         Critical Studio is a reference shoebox-style interior suitable for
-        top-notch audio recording, production and reproduction. It is part of an
-        autonomous building raised in 2019 close to Corinth canal.
+        top-notch audio recording, production and reproduction. It comprises
+        part of an autonomous building raised in 2019 close to Corinth canal.
       </p>
 
       <p>
         The studio combines rigorous acoustic engineering with practical
         flexibility for professional recording, mixing, and critical listening.
       </p>
+
+      <ul>
+        <li>Structural Acoustics: Dr. N. Barkas,</li>
+        <li>Acoustic Design: Dr. D. Keramidas</li>
+        <li>Measurements: I. Papafilis (MSc)</li>
+      </ul>
     </div>
   </section>
 </MainLayout>
@@ -109,6 +115,24 @@ import MainLayout from "../../layouts/MainLayout.astro";
     font-size: 1.25rem;
     line-height: 1.7;
     color: #1a1a1a;
+  }
+
+  .about-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .about-content li {
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    list-style: none;
   }
 
   /* Mobile adjustments */
